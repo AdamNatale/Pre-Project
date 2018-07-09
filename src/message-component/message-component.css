@@ -1,0 +1,11 @@
+#msg {
+    width: 200px;
+    height: 400px;
+    border: 1px black solid;
+}
+
+#obj {
+    padding-top: 12px;
+    font-size: 16px;
+    text-align: center;
+}
