@@ -11,8 +11,22 @@ class App extends Component {
     this.user = 0;
     this.computer = 0;
     this.options = ['Rock', 'Paper', 'Scissors'];
-    this.state = {user: 0, computer: 0, userRound: '', pcRound: ''};
+    this.state = {user: 0, computer: 0, userRound: '', pcRound: '', response: ''};
   }
+
+  componentDidMount() {
+    this.callApi()
+      .then(res => this.setState({response: res.express}))
+      .catch(err => console.log(err));
+  }
+
+  callApi = async() => {
+    const response = await fetch('/api/hello');
+    const body = await response.json();
+
+    if (response.status !== 200) throw Error(body.message);
+    return body;
+  };
 
   getOption(data) {
     var pcPick = Math.floor(Math.random() * 3);
@@ -111,6 +125,7 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
+          <h1 className="App-title">{this.state.response}</h1>
           <p style={{fontSize: "20px"}}>ROCK PAPER SCISSORS</p>
           <h1 className="App-title">Player vs Computer</h1>
           <h1 className="App-title">{this.state.user} - {this.state.computer}</h1>
