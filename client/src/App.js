@@ -58,6 +58,17 @@ class App extends Component {
               userRound: userStrike,
               pcRound: pcStrike
             });
+            fetch('/api/score', {
+              method: 'POST',
+              headers: {
+                'Acceptt': 'application/json',
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({
+                name: 'a',
+                score: 0
+              })
+            });
             break;
         }
         break;
@@ -125,7 +136,6 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <h1 className="App-title">{this.state.response}</h1>
           <p style={{fontSize: "20px"}}>ROCK PAPER SCISSORS</p>
           <h1 className="App-title">Player vs Computer</h1>
           <h1 className="App-title">{this.state.user} - {this.state.computer}</h1>
