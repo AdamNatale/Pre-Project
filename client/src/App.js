@@ -58,17 +58,6 @@ class App extends Component {
               userRound: userStrike,
               pcRound: pcStrike
             });
-            fetch('/api/score', {
-              method: 'POST',
-              headers: {
-                'Acceptt': 'application/json',
-                'Content-Type': 'application/json'
-              },
-              body: JSON.stringify({
-                name: 'a',
-                score: 0
-              })
-            });
             break;
         }
         break;
@@ -132,6 +121,23 @@ class App extends Component {
     }
   }
 
+  sendScore() {
+    var username = document.getElementById('myText').value;
+    if(username) {
+      fetch('/api/score', {
+        method: 'POST',
+        headers: {
+          'Acceptt': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          name: username,
+          score: this.state.user - this.state.computer
+        })
+      });
+    }
+  }
+
   render() {
     return (
       <div className="App">
@@ -153,6 +159,13 @@ class App extends Component {
           <MessageComponent data='Rock' onSelectOption={this.getOption.bind(this)}></MessageComponent>
           <MessageComponent data='Paper' onSelectOption={this.getOption.bind(this)}></MessageComponent>
           <MessageComponent data='Scissors' onSelectOption={this.getOption.bind(this)}></MessageComponent>
+        </div>
+        <p className="App-intro">
+          Current score: {this.state.user - this.state.computer}
+        </p>
+        <div className="App-intro">
+          Name: <input type="text" id="myText" /> 
+          <button onClick={this.sendScore.bind(this)}>Send Score</button>
         </div>
       </div>
     );
