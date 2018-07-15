@@ -4,6 +4,11 @@ import './App.css';
 import MessageComponent from './message-component/message-component';
 
 class App extends Component {
+
+  getOption(data) {
+    console.log(data);
+  }
+
   render() {
     return (
       <div className="App">
@@ -12,11 +17,12 @@ class App extends Component {
           <h1 className="App-title">Welcome to React</h1>
         </header>
         <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
+          Please make a selection:
         </p>
         <div id="adam">
-          THis is a div
-          <MessageComponent></MessageComponent>
+          <MessageComponent data='Rock' onSelectOption={this.getOption}></MessageComponent>
+          <MessageComponent data='Paper' onSelectOption={this.getOption}></MessageComponent>
+          <MessageComponent data='Scissors' onSelectOption={this.getOption}></MessageComponent>
         </div>
       </div>
     );
