@@ -1,11 +1,12 @@
 #msg {
     width: 200px;
     height: 400px;
-    border: 1px black solid;
+    border: 6px #d9d9d9 solid;
     margin: 0px 20px;
     display: inline-block;
     border-radius: 12px;
     cursor: pointer;
+    background-color: #c0c0c0;
 }
 
 #obj {
@@ -13,3 +14,4 @@
     font-size: 16px;
     text-align: center;
 }
+
