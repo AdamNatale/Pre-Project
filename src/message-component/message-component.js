@@ -11,7 +11,7 @@ export default class MessageComponent extends React.Component {
         this.weapon = props.data;
         this.card = {
             'width': '200px',
-            'height': '400px',
+            'height': '100px',
             'margin': '0px 20px',
             'display': 'inline-block',
             'borderRadius': '12px',

@@ -111,7 +111,7 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
+          <p style={{fontSize: "20px"}}>ROCK PAPER SCISSORS</p>
           <h1 className="App-title">Player vs Computer</h1>
           <h1 className="App-title">{this.state.user} - {this.state.computer}</h1>
         </header>
