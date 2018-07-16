@@ -10,7 +10,8 @@ class App extends Component {
     this.user = 0;
     this.computer = 0;
     this.options = ['Rock', 'Paper', 'Scissors'];
-    this.state = {user: 0, computer: 0, userRound: '', pcRound: '', response: ''};
+    this.state = {user: 0, computer: 0, userRound: '', pcRound: '', response: '', scores: []};
+    this.scores = [];
 
     fetch('/api/getScores')
     .then(results => {
@@ -18,6 +19,11 @@ class App extends Component {
     })
     .then(data => {
       console.log(data);
+      this.scores = data;
+      var scoreList = this.scores.map(function(entry) {
+        return <div key={entry['_id']}>{entry['name'] + ': ' + entry['score']}</div>;
+      });
+      this.setState({scores: scoreList})
     });
   }
 
@@ -173,6 +179,10 @@ class App extends Component {
         <div className="App-intro">
           Name: <input type="text" id="myText" /> 
           <button onClick={this.sendScore.bind(this)}>Send Score</button>
+        </div>
+        <div style={{'textAlign': 'center'}}>
+          <h1>RECENT SCORES</h1>
+          <div>{this.state.scores}</div>
         </div>
       </div>
     );
