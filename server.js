@@ -29,6 +29,13 @@ mongoose.connection.on('disconnected', function() {
   console.log('Mongoose connection disconnected');
 });
 
+app.get('/api/getScores', (req, res) => {
+  m = mongoose.model('rps');
+  m.find().then(function(doc) {
+    res.send(doc);
+  });
+});
+
 app.post('/api/score', function(req, res) {
   var newName = req.body.name;
   var newScore = req.body.score;

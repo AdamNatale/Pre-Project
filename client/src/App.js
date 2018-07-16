@@ -1,6 +1,5 @@
 import React, { Component} from 'react';
 import ReactDOM from 'react-dom';
-import logo from './logo.svg';
 import './App.css';
 import MessageComponent from './message-component/message-component';
 
@@ -12,6 +11,14 @@ class App extends Component {
     this.computer = 0;
     this.options = ['Rock', 'Paper', 'Scissors'];
     this.state = {user: 0, computer: 0, userRound: '', pcRound: '', response: ''};
+
+    fetch('/api/getScores')
+    .then(results => {
+      return results.json();
+    })
+    .then(data => {
+      console.log(data);
+    });
   }
 
   componentDidMount() {
